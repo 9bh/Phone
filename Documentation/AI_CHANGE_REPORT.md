@@ -300,3 +300,73 @@ No third-party dependencies added.
 ### Completion Status
 Partially Completed
 المرحلة مكتملة هندسياً وبرمجياً وتم تنفيذ كافة التصحيحات الساكنة والنهائية المطلوبة بنجاح، ولكنها تبقى مكتملة جزئياً (`Partially Completed`) وغير معتمدة للبدء في المرحلة الثانية إلى أن يتم إجراء التحقق والبناء والتشغيل الفعلي داخل بيئة Xcode على macOS.
+
+---
+
+## Change Entry
+
+### Date and Time
+2026-07-15 00:19:00 +03:00
+
+### Task Name
+Fix Xcode Project UUID Collision
+
+### Requested Work
+إصلاح تعارض معرفات UUIDs داخل ملف إعدادات مشروع Xcode (`SecureVault.xcodeproj/project.pbxproj`) والذي أدى إلى فشل البناء على GitHub Actions بظهور الخطأ:
+`The PBXProject with ID 100000000000000000000000 has an invalid value for rootGroup. A PBXGroup was expected, but a XCBuildConfiguration was specified with the identifier 100000000000000000000001.`
+مع الالتزام الصارم بعدم تعديل أي ملف Swift، وعدم إضافة أي ميزة، وعدم تغيير المعمارية، وعدم البدء في أي المرحلة الثانية، والاكتفاء بإصلاح التعارضات فقط مع الحفاظ على جميع Build Settings وTargets وSchemes والعلاقات السليمة.
+
+### Root Cause Analysis (سبب المشكلة)
+عند قراءة وتحليل ملف `project.pbxproj`، تبين وجود تكرار وتعارض مباشر في استخدام معرف UUID رقم `100000000000000000000001` لأكثر من كائن (Object) مختلف في نفس الوقت داخل قسم `objects`:
+1. تم استخدامه كمعرف لكائن المجموعة الرئيسية (`PBXGroup` لـ `mainGroup` و`rootGroup`).
+2. وتم استخدامه أيضاً كمعرف لتكوين البناء (`XCBuildConfiguration`) المسمى `Debug` الخاص بالمشروع (`PBXProject`).
+
+عندما يقوم محرك Xcode أو xcodebuild بوضع الكائنات داخل قاموس (Dictionary) مفهرس بـ UUID، قام كائن `XCBuildConfiguration` ذو الرقم `100000000000000000000001` بالكتابة فوق كائن `PBXGroup` ذي نفس الرقم واستبداله. وعندما حاول كائن `PBXProject` (`100000000000000000000000`) استدعاء `mainGroup = 100000000000000000000001;`، وجد بدلاً منه `XCBuildConfiguration`، مما تسبب في ظهور الخطأ وإيقاف البناء فوراً.
+
+### Changed UUIDs (المعرفات التي تم تغييرها)
+تم الاحتفاظ بمعرفات `PBXGroup` (`100000000000000000000001`) و`PBXProject` (`100000000000000000000000`) وجميع مجموعات وعناصر الملفات والأهداف كما هي تماماً، وتم إعطاء كائنات `XCBuildConfiguration` جميعها معرفات جديدة وفريدة بالكامل تبدأ بالبادئة `1100...` لتجنب أي تعارض مستقبلي، مع تحديث المؤشرات المقابلة لها في قسم `XCConfigurationList`:
+* تغيير `XCBuildConfiguration` (`Debug` لـ `PBXProject`) من `100000000000000000000001` إلى `110000000000000000000001`.
+* تغيير `XCBuildConfiguration` (`Release` لـ `PBXProject`) من `100000000000000000000002` إلى `110000000000000000000002`.
+* تغيير `XCBuildConfiguration` (`Debug` لـ `SecureVault target`) من `100000000000000000000006` إلى `110000000000000000000006`.
+* تغيير `XCBuildConfiguration` (`Release` لـ `SecureVault target`) من `100000000000000000000007` إلى `110000000000000000000007`.
+* تغيير `XCBuildConfiguration` (`Debug` لـ `SecureVaultTests target`) من `100000000000000000000008` إلى `110000000000000000000008`.
+* تغيير `XCBuildConfiguration` (`Release` لـ `SecureVaultTests target`) من `100000000000000000000009` إلى `110000000000000000000009`.
+
+### Files Modified (الملف الوحيد الذي تم تعديله)
+* `C:\Users\Pc\Desktop\SecureVault\SecureVault.xcodeproj\project.pbxproj` فقط لا غير.
+
+### Swift Files Modifications
+* تأكيد قاطع: **لم يتم تعديل أي ملف Swift نهائياً (`Zero Swift Files Modified`)**. جميع شفرات وتطبيقات واختبارات Swift بقيت كما هي دون أي حرف إضافي أو محذوف.
+
+### Verification Result (نتيجة الفحص)
+* تم تدقيق الملف بالكامل والتأكد من أن كل Object في المشروع يمتلك UUID فريداً ومختلفاً عن جميع الكائنات الأخرى بنسبة 100%.
+* تم التحقق من بقاء ارتباطات `rootObject` تشير إلى `PBXProject` الصحيح، و`mainGroup` تشير إلى `PBXGroup` الصحيح، وجميع روابط `XCConfigurationList` تشير إلى معرفات `XCBuildConfiguration` الجديدة السليمة دون فقدان أي إعداد بناء (`Build Settings`) أو تغيير في إصدار Swift أو Deployment Target.
+
+### Build Verification
+* **Build Command**: `xcodebuild -scheme SecureVault -destination 'generic/platform=iOS'`
+* **Scheme**: `SecureVault`
+* **Destination**: iPhone Simulator / Physical iPhone (`generic/platform=iOS`)
+* **Build Configuration**: `Debug` / `Release`
+* **Actual Result**: Build: Not Run. بيئة الاستضافة والتطوير الحالية تعمل بنظام Windows ولا تتوافر بها أدوات `xcodebuild` أو محرك Xcode محلياً لتنفيذ أمر البناء الفعلي في سطر الأوامر.
+* **Errors Count**: Unknown until verified in Xcode.
+* **Warnings Count**: Unknown until verified in Xcode.
+
+### Test Verification
+* **Tests Run**: Tests: Not Run. لا تتوافر بيئة XCTest محلياً على نظام Windows.
+* **Passed Count**: Unknown until verified in Xcode.
+* **Failed Count**: Unknown until verified in Xcode.
+* **Skipped Tests & Reasons**: تم تخطي التشغيل العملي لعدم توفر تطبيق Xcode على نظام التشغيل المستضيف.
+
+### Run Verification
+* **Simulator/Device**: iPhone Simulator (iOS 16.0+)
+* **iOS Version**: iOS 16.0 minimum
+* **App Ran**: Run: Not Run. لا يوجد محاكي iOS في نظام Windows.
+* **Navigation Worked**: Unknown until verified in Xcode.
+* **Issues During Run**: Unknown until verified in Xcode.
+
+### Recommended Next Step
+إعادة تشغيل خط بناء GitHub Actions أو فتح ملف `SecureVault.xcodeproj` في تطبيق Xcode على نظام macOS لتأكيد زوال خطأ قراءة ملف المشروع ونجاح البناء الفعلي قبل الانتقال لأي مرحلة جديدة.
+
+### Completion Status
+Partially Completed
+تم إصلاح تعارض المعرفات بالكامل في ملف إعدادات المشروع بنجاح تام، مع الالتزام التام بعدم مس أي ملف Swift وعدم البدء في أي مرحلة جديدة، وتبقى النتيجة العملية معتمدة جزئياً (`Partially Completed`) إلى حين البناء الفعلي في بيئة Xcode على macOS أو GitHub Actions.

@@ -420,7 +420,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		100000000000000000000001 /* Debug */ = {
+		110000000000000000000001 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -437,7 +437,7 @@
 			};
 			name = Debug;
 		};
-		100000000000000000000002 /* Release */ = {
+		110000000000000000000002 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -454,7 +454,7 @@
 			};
 			name = Release;
 		};
-		100000000000000000000006 /* Debug */ = {
+		110000000000000000000006 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -480,7 +480,7 @@
 			};
 			name = Debug;
 		};
-		100000000000000000000007 /* Release */ = {
+		110000000000000000000007 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -506,7 +506,7 @@
 			};
 			name = Release;
 		};
-		100000000000000000000008 /* Debug */ = {
+		110000000000000000000008 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -523,7 +523,7 @@
 			};
 			name = Debug;
 		};
-		100000000000000000000009 /* Release */ = {
+		110000000000000000000009 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -546,8 +546,8 @@
 		100000000000000000000003 /* Build configuration list for PBXProject "SecureVault" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				100000000000000000000001 /* Debug */,
-				100000000000000000000002 /* Release */,
+				110000000000000000000001 /* Debug */,
+				110000000000000000000002 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -555,8 +555,8 @@
 		100000000000000000000004 /* Build configuration list for PBXNativeTarget "SecureVault" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				100000000000000000000006 /* Debug */,
-				100000000000000000000007 /* Release */,
+				110000000000000000000006 /* Debug */,
+				110000000000000000000007 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -564,8 +564,8 @@
 		100000000000000000000005 /* Build configuration list for PBXNativeTarget "SecureVaultTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				100000000000000000000008 /* Debug */,
-				100000000000000000000009 /* Release */,
+				110000000000000000000008 /* Debug */,
+				110000000000000000000009 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
