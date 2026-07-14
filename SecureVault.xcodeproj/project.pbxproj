@@ -1,0 +1,576 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		400000000000000000000001 /* SecureVaultApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000001 /* SecureVaultApp.swift */; };
+		400000000000000000000002 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000002 /* AppRootView.swift */; };
+		400000000000000000000003 /* DependencyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000003 /* DependencyContainer.swift */; };
+		400000000000000000000004 /* AppSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000004 /* AppSection.swift */; };
+		400000000000000000000005 /* NavigationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000005 /* NavigationRouter.swift */; };
+		400000000000000000000006 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000006 /* AppError.swift */; };
+		400000000000000000000007 /* SecureLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000007 /* SecureLogger.swift */; };
+		400000000000000000000008 /* DashboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000008 /* DashboardView.swift */; };
+		400000000000000000000009 /* AccountsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000009 /* AccountsView.swift */; };
+		400000000000000000000010 /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000010 /* HistoryView.swift */; };
+		400000000000000000000011 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000011 /* SettingsView.swift */; };
+		400000000000000000000012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000012 /* Assets.xcassets */; };
+		400000000000000000000013 /* NavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000013 /* NavigationTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		960000000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 100000000000000000000000 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 900000000000000000000001;
+			remoteInfo = SecureVault;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		300000000000000000000001 /* SecureVaultApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureVaultApp.swift; sourceTree = "<group>"; };
+		300000000000000000000002 /* AppRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootView.swift; sourceTree = "<group>"; };
+		300000000000000000000003 /* DependencyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyContainer.swift; sourceTree = "<group>"; };
+		300000000000000000000004 /* AppSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSection.swift; sourceTree = "<group>"; };
+		300000000000000000000005 /* NavigationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationRouter.swift; sourceTree = "<group>"; };
+		300000000000000000000006 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
+		300000000000000000000007 /* SecureLogger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureLogger.swift; sourceTree = "<group>"; };
+		300000000000000000000008 /* DashboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardView.swift; sourceTree = "<group>"; };
+		300000000000000000000009 /* AccountsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountsView.swift; sourceTree = "<group>"; };
+		300000000000000000000010 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		300000000000000000000011 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		300000000000000000000012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		300000000000000000000013 /* NavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTests.swift; sourceTree = "<group>"; };
+		300000000000000000000014 /* AI_CHANGE_REPORT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AI_CHANGE_REPORT.md; sourceTree = "<group>"; };
+		800000000000000000000001 /* SecureVault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecureVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		800000000000000000000002 /* SecureVaultTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecureVaultTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		100000000000000000000001 = {
+			isa = PBXGroup;
+			children = (
+				500000000000000000000001 /* App */,
+				500000000000000000000002 /* Core */,
+				500000000000000000000003 /* Presentation */,
+				500000000000000000000004 /* Domain */,
+				500000000000000000000005 /* Data */,
+				500000000000000000000006 /* Security */,
+				500000000000000000000007 /* Resources */,
+				500000000000000000000008 /* Tests */,
+				500000000000000000000009 /* Documentation */,
+				500000000000000000000010 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		500000000000000000000001 /* App */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000001 /* SecureVaultApp.swift */,
+				300000000000000000000002 /* AppRootView.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		500000000000000000000002 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				600000000000000000000001 /* DependencyInjection */,
+				600000000000000000000002 /* Navigation */,
+				600000000000000000000003 /* Errors */,
+				600000000000000000000004 /* Logging */,
+				600000000000000000000005 /* Utilities */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		600000000000000000000001 /* DependencyInjection */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000003 /* DependencyContainer.swift */,
+			);
+			path = DependencyInjection;
+			sourceTree = "<group>";
+		};
+		600000000000000000000002 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000004 /* AppSection.swift */,
+				300000000000000000000005 /* NavigationRouter.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		600000000000000000000003 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000006 /* AppError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
+		600000000000000000000004 /* Logging */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000007 /* SecureLogger.swift */,
+			);
+			path = Logging;
+			sourceTree = "<group>";
+		};
+		600000000000000000000005 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		500000000000000000000003 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				600000000000000000000006 /* Components */,
+				600000000000000000000007 /* Features */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		600000000000000000000006 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		600000000000000000000007 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				700000000000000000000001 /* Dashboard */,
+				700000000000000000000002 /* Accounts */,
+				700000000000000000000003 /* History */,
+				700000000000000000000004 /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		700000000000000000000001 /* Dashboard */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000008 /* DashboardView.swift */,
+			);
+			path = Dashboard;
+			sourceTree = "<group>";
+		};
+		700000000000000000000002 /* Accounts */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000009 /* AccountsView.swift */,
+			);
+			path = Accounts;
+			sourceTree = "<group>";
+		};
+		700000000000000000000003 /* History */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000010 /* HistoryView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		700000000000000000000004 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000011 /* SettingsView.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		500000000000000000000004 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				600000000000000000000008 /* Models */,
+				600000000000000000000009 /* Repositories */,
+				600000000000000000000010 /* UseCases */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		600000000000000000000008 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		600000000000000000000009 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		600000000000000000000010 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		500000000000000000000005 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				600000000000000000000011 /* Repositories */,
+				600000000000000000000012 /* Services */,
+				600000000000000000000013 /* Storage */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		600000000000000000000011 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		600000000000000000000012 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		600000000000000000000013 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		500000000000000000000006 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		500000000000000000000007 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000012 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		500000000000000000000008 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				600000000000000000000014 /* SecureVaultTests */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		600000000000000000000014 /* SecureVaultTests */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000013 /* NavigationTests.swift */,
+			);
+			path = SecureVaultTests;
+			sourceTree = "<group>";
+		};
+		500000000000000000000009 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000014 /* AI_CHANGE_REPORT.md */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
+		500000000000000000000010 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				800000000000000000000001 /* SecureVault.app */,
+				800000000000000000000002 /* SecureVaultTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		900000000000000000000001 /* SecureVault */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 100000000000000000000004 /* Build configuration list for PBXNativeTarget "SecureVault" */;
+			buildPhases = (
+				200000000000000000000001 /* Sources */,
+				200000000000000000000002 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SecureVault;
+			productName = SecureVault;
+			productReference = 800000000000000000000001 /* SecureVault.app */;
+			productType = "com.apple.product-type.application";
+		};
+		900000000000000000000002 /* SecureVaultTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 100000000000000000000005 /* Build configuration list for PBXNativeTarget "SecureVaultTests" */;
+			buildPhases = (
+				200000000000000000000003 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				950000000000000000000001 /* PBXTargetDependency */,
+			);
+			name = SecureVaultTests;
+			productName = SecureVaultTests;
+			productReference = 800000000000000000000002 /* SecureVaultTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		100000000000000000000000 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1600;
+				LastUpgradeCheck = 1600;
+				TargetAttributes = {
+					900000000000000000000001 = {
+						CreatedOnToolsVersion = 16.0;
+					};
+					900000000000000000000002 = {
+						CreatedOnToolsVersion = 16.0;
+						TestTargetID = 900000000000000000000001;
+					};
+				};
+			};
+			buildConfigurationList = 100000000000000000000003 /* Build configuration list for PBXProject "SecureVault" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 100000000000000000000001;
+			productRefGroup = 500000000000000000000010 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				900000000000000000000001 /* SecureVault */,
+				900000000000000000000002 /* SecureVaultTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		200000000000000000000002 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				400000000000000000000012 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		200000000000000000000001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				400000000000000000000001 /* SecureVaultApp.swift in Sources */,
+				400000000000000000000002 /* AppRootView.swift in Sources */,
+				400000000000000000000003 /* DependencyContainer.swift in Sources */,
+				400000000000000000000004 /* AppSection.swift in Sources */,
+				400000000000000000000005 /* NavigationRouter.swift in Sources */,
+				400000000000000000000006 /* AppError.swift in Sources */,
+				400000000000000000000007 /* SecureLogger.swift in Sources */,
+				400000000000000000000008 /* DashboardView.swift in Sources */,
+				400000000000000000000009 /* AccountsView.swift in Sources */,
+				400000000000000000000010 /* HistoryView.swift in Sources */,
+				400000000000000000000011 /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		200000000000000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				400000000000000000000013 /* NavigationTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		950000000000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 900000000000000000000001 /* SecureVault */;
+			targetProxy = 960000000000000000000001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		100000000000000000000001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		100000000000000000000002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		100000000000000000000006 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartsphere.SecureVault;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1";
+			};
+			name = Debug;
+		};
+		100000000000000000000007 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartsphere.SecureVault;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1";
+			};
+			name = Release;
+		};
+		100000000000000000000008 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartsphere.SecureVaultTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SecureVault.app/SecureVault";
+			};
+			name = Debug;
+		};
+		100000000000000000000009 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.smartsphere.SecureVaultTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_STRICT_CONCURRENCY = complete;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SecureVault.app/SecureVault";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		100000000000000000000003 /* Build configuration list for PBXProject "SecureVault" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				100000000000000000000001 /* Debug */,
+				100000000000000000000002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		100000000000000000000004 /* Build configuration list for PBXNativeTarget "SecureVault" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				100000000000000000000006 /* Debug */,
+				100000000000000000000007 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		100000000000000000000005 /* Build configuration list for PBXNativeTarget "SecureVaultTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				100000000000000000000008 /* Debug */,
+				100000000000000000000009 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 100000000000000000000000 /* Project object */;
+}
