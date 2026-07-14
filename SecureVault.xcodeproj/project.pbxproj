@@ -20,6 +20,17 @@
 		400000000000000000000011 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000011 /* SettingsView.swift */; };
 		400000000000000000000012 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000012 /* Assets.xcassets */; };
 		400000000000000000000013 /* NavigationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000013 /* NavigationTests.swift */; };
+		400000000000000000000014 /* SecurityState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000015 /* SecurityState.swift */; };
+		400000000000000000000015 /* AutoLockDuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000016 /* AutoLockDuration.swift */; };
+		400000000000000000000016 /* BiometricAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000017 /* BiometricAuthService.swift */; };
+		400000000000000000000017 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000018 /* SessionManager.swift */; };
+		400000000000000000000018 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000019 /* SplashView.swift */; };
+		400000000000000000000019 /* LockScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000020 /* LockScreenView.swift */; };
+		400000000000000000000020 /* PrivacyCoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000021 /* PrivacyCoverView.swift */; };
+		400000000000000000000021 /* FirstSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000022 /* FirstSetupView.swift */; };
+		400000000000000000000022 /* AddAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000023 /* AddAccountView.swift */; };
+		400000000000000000000023 /* ChangePasscodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000024 /* ChangePasscodeView.swift */; };
+		400000000000000000000024 /* SecurityStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 300000000000000000000025 /* SecurityStateTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,8 +58,17 @@
 		300000000000000000000012 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		300000000000000000000013 /* NavigationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationTests.swift; sourceTree = "<group>"; };
 		300000000000000000000014 /* AI_CHANGE_REPORT.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = AI_CHANGE_REPORT.md; sourceTree = "<group>"; };
-		800000000000000000000001 /* SecureVault.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SecureVault.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		800000000000000000000002 /* SecureVaultTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SecureVaultTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		300000000000000000000015 /* SecurityState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityState.swift; sourceTree = "<group>"; };
+		300000000000000000000016 /* AutoLockDuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLockDuration.swift; sourceTree = "<group>"; };
+		300000000000000000000017 /* BiometricAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthService.swift; sourceTree = "<group>"; };
+		300000000000000000000018 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		300000000000000000000019 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		300000000000000000000020 /* LockScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockScreenView.swift; sourceTree = "<group>"; };
+		300000000000000000000021 /* PrivacyCoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyCoverView.swift; sourceTree = "<group>"; };
+		300000000000000000000022 /* FirstSetupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstSetupView.swift; sourceTree = "<group>"; };
+		300000000000000000000023 /* AddAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAccountView.swift; sourceTree = "<group>"; };
+		300000000000000000000024 /* ChangePasscodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasscodeView.swift; sourceTree = "<group>"; };
+		300000000000000000000025 /* SecurityStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityStateTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXGroup section */
@@ -141,6 +161,9 @@
 		600000000000000000000006 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				300000000000000000000019 /* SplashView.swift */,
+				300000000000000000000020 /* LockScreenView.swift */,
+				300000000000000000000021 /* PrivacyCoverView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -152,6 +175,7 @@
 				700000000000000000000002 /* Accounts */,
 				700000000000000000000003 /* History */,
 				700000000000000000000004 /* Settings */,
+				700000000000000000000005 /* Setup */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -168,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				300000000000000000000009 /* AccountsView.swift */,
+				300000000000000000000023 /* AddAccountView.swift */,
 			);
 			path = Accounts;
 			sourceTree = "<group>";
@@ -184,8 +209,17 @@
 			isa = PBXGroup;
 			children = (
 				300000000000000000000011 /* SettingsView.swift */,
+				300000000000000000000024 /* ChangePasscodeView.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		700000000000000000000005 /* Setup */ = {
+			isa = PBXGroup;
+			children = (
+				300000000000000000000022 /* FirstSetupView.swift */,
+			);
+			path = Setup;
 			sourceTree = "<group>";
 		};
 		500000000000000000000004 /* Domain */ = {
@@ -201,6 +235,8 @@
 		600000000000000000000008 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				300000000000000000000015 /* SecurityState.swift */,
+				300000000000000000000016 /* AutoLockDuration.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -253,6 +289,8 @@
 		500000000000000000000006 /* Security */ = {
 			isa = PBXGroup;
 			children = (
+				300000000000000000000017 /* BiometricAuthService.swift */,
+				300000000000000000000018 /* SessionManager.swift */,
 			);
 			path = Security;
 			sourceTree = "<group>";
@@ -277,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				300000000000000000000013 /* NavigationTests.swift */,
+				300000000000000000000025 /* SecurityStateTests.swift */,
 			);
 			path = SecureVaultTests;
 			sourceTree = "<group>";
@@ -398,6 +437,16 @@
 				400000000000000000000009 /* AccountsView.swift in Sources */,
 				400000000000000000000010 /* HistoryView.swift in Sources */,
 				400000000000000000000011 /* SettingsView.swift in Sources */,
+				400000000000000000000014 /* SecurityState.swift in Sources */,
+				400000000000000000000015 /* AutoLockDuration.swift in Sources */,
+				400000000000000000000016 /* BiometricAuthService.swift in Sources */,
+				400000000000000000000017 /* SessionManager.swift in Sources */,
+				400000000000000000000018 /* SplashView.swift in Sources */,
+				400000000000000000000019 /* LockScreenView.swift in Sources */,
+				400000000000000000000020 /* PrivacyCoverView.swift in Sources */,
+				400000000000000000000021 /* FirstSetupView.swift in Sources */,
+				400000000000000000000022 /* AddAccountView.swift in Sources */,
+				400000000000000000000023 /* ChangePasscodeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -406,6 +455,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				400000000000000000000013 /* NavigationTests.swift in Sources */,
+				400000000000000000000024 /* SecurityStateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

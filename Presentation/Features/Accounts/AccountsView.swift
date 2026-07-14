@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct AccountsView: View {
+    @State private var isShowingAddAccount: Bool = false
+    
     init() {}
     
     var body: some View {
@@ -21,9 +23,26 @@ struct AccountsView: View {
                         .multilineTextAlignment(.center)
                 }
                 .padding(.horizontal, 24)
+                
+                Button(action: { isShowingAddAccount = true }) {
+                    HStack(spacing: 8) {
+                        Image(systemName: "plus")
+                        Text("Add Account")
+                    }
+                    .font(.headline)
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 12)
+                    .background(Color.accentColor)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                }
+                .padding(.top, 8)
             }
             .frame(maxWidth: .infinity)
         }
         .navigationTitle("Accounts")
+        .sheet(isPresented: $isShowingAddAccount) {
+            AddAccountView()
+        }
     }
 }
