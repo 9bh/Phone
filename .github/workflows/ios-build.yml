@@ -1,0 +1,32 @@
+name: SecureVault Build
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Show Xcode Version
+      run: xcodebuild -version
+
+    - name: Build SecureVault
+      run: |
+        xcodebuild \
+        -project SecureVault.xcodeproj \
+        -scheme SecureVault \
+        -sdk iphonesimulator \
+        -destination 'platform=iOS Simulator,name=iPhone 16' \
+        build
