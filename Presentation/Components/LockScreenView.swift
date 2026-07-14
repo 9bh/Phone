@@ -7,48 +7,57 @@ struct LockScreenView: View {
     @State private var isEvaluatingBiometrics: Bool = false
     
     var body: some View {
-        ZStack {
-            Color(uiColor: .systemBackground)
-                .ignoresSafeArea()
+        GeometryReader { geometry in
+            let width = geometry.size.width
+            let height = geometry.size.height
+            let isSmallDevice = height < 680
+            let buttonSize = min(max((width - 100) / 3, 58), 76)
+            let rowSpacing = isSmallDevice ? 12.0 : 16.0
             
-            VStack(spacing: 32) {
-                Spacer()
+            ZStack {
+                Color(uiColor: .systemBackground)
+                    .ignoresSafeArea()
                 
-                // Header & Logo
-                VStack(spacing: 12) {
-                    Image(systemName: "lock.shield.fill")
-                        .font(.system(size: 52))
-                        .foregroundColor(.accentColor)
+                VStack(spacing: isSmallDevice ? 16 : 28) {
+                    Spacer(minLength: 8)
                     
-                    Text("Welcome Back")
-                        .font(.title2.bold())
-                    
-                    Text("Enter Passcode")
-                        .font(.subheadline)
-                        .foregroundColor(.secondary)
-                }
-                
-                // 6 Indicator Circles
-                HStack(spacing: 16) {
-                    ForEach(0..<6, id: \.self) { index in
-                        Circle()
-                            .fill(index < pinInput.count ? Color.primary : Color.clear)
-                            .frame(width: 14, height: 14)
-                            .overlay(
-                                Circle()
-                                    .stroke(Color.secondary.opacity(0.5), lineWidth: 1.5)
-                            )
+                    // Header & Logo
+                    VStack(spacing: isSmallDevice ? 8 : 12) {
+                        Image(systemName: "lock.shield.fill")
+                            .font(.system(size: isSmallDevice ? 40 : 52))
+                            .foregroundColor(.accentColor)
+                        
+                        Text("Welcome Back")
+                            .font(isSmallDevice ? .title3.bold() : .title2.bold())
+                        
+                        Text("Enter Passcode")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
                     }
+                    
+                    // 6 Indicator Circles
+                    HStack(spacing: isSmallDevice ? 12 : 16) {
+                        ForEach(0..<6, id: \.self) { index in
+                            Circle()
+                                .fill(index < pinInput.count ? Color.primary : Color.clear)
+                                .frame(width: isSmallDevice ? 12 : 14, height: isSmallDevice ? 12 : 14)
+                                .overlay(
+                                    Circle()
+                                        .stroke(Color.secondary.opacity(0.5), lineWidth: 1.5)
+                                )
+                        }
+                    }
+                    .modifier(ShakeEffect(animatableData: hasError ? 1 : 0))
+                    .padding(.vertical, isSmallDevice ? 4 : 8)
+                    
+                    Spacer(minLength: 8)
+                    
+                    // Native-style Numeric Keypad
+                    keypadGrid(buttonSize: buttonSize, rowSpacing: rowSpacing)
+                        .padding(.horizontal, 28)
+                        .padding(.bottom, geometry.safeAreaInsets.bottom > 0 ? 12 : 24)
                 }
-                .modifier(ShakeEffect(animatableData: hasError ? 1 : 0))
-                .padding(.vertical, 8)
-                
-                Spacer()
-                
-                // Custom Numeric Keypad
-                keypadGrid
-                    .padding(.horizontal, 36)
-                    .padding(.bottom, 20)
+                .frame(width: width, height: height)
             }
         }
         .onAppear {
@@ -62,7 +71,7 @@ struct LockScreenView: View {
         }
     }
     
-    private var keypadGrid: some View {
+    private func keypadGrid(buttonSize: CGFloat, rowSpacing: CGFloat) -> some View {
         let buttons: [[KeypadButton]] = [
             [.digit("1"), .digit("2"), .digit("3")],
             [.digit("4"), .digit("5"), .digit("6")],
@@ -70,11 +79,11 @@ struct LockScreenView: View {
             [.biometric,  .digit("0"), .delete]
         ]
         
-        return VStack(spacing: 16) {
+        return VStack(spacing: rowSpacing) {
             ForEach(0..<buttons.count, id: \.self) { row in
-                HStack(spacing: 24) {
+                HStack(spacing: 20) {
                     ForEach(buttons[row], id: \.self) { button in
-                        keypadButtonView(for: button)
+                        keypadButtonView(for: button, size: buttonSize)
                     }
                 }
             }
@@ -82,13 +91,13 @@ struct LockScreenView: View {
     }
     
     @ViewBuilder
-    private func keypadButtonView(for button: KeypadButton) -> some View {
+    private func keypadButtonView(for button: KeypadButton, size: CGFloat) -> some View {
         switch button {
         case .digit(let number):
             Button(action: { handleDigit(number) }) {
                 Text(number)
                     .font(.title.bold())
-                    .frame(width: 76, height: 76)
+                    .frame(width: size, height: size)
                     .background(Color.secondary.opacity(0.12))
                     .clipShape(Circle())
             }
@@ -98,7 +107,7 @@ struct LockScreenView: View {
             Button(action: { handleDelete() }) {
                 Image(systemName: "delete.left.fill")
                     .font(.title2)
-                    .frame(width: 76, height: 76)
+                    .frame(width: size, height: size)
                     .background(Color.clear)
                     .clipShape(Circle())
             }
@@ -118,14 +127,14 @@ struct LockScreenView: View {
                         Text("Face ID")
                             .font(.caption2.bold())
                     }
-                    .frame(width: 76, height: 76)
+                    .frame(width: size, height: size)
                     .background(Color.accentColor.opacity(0.12))
                     .clipShape(Circle())
                 }
                 .foregroundColor(.accentColor)
             } else {
                 Color.clear
-                    .frame(width: 76, height: 76)
+                    .frame(width: size, height: size)
             }
         }
     }

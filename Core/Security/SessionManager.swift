@@ -8,8 +8,7 @@ final class SessionManager: ObservableObject {
     @Published var autoLockDuration: AutoLockDuration = .immediately
     
     var isSetupCompleted: Bool {
-        guard let passcode = inMemoryPasscode else { return false }
-        return !passcode.isEmpty
+        UserDefaults.standard.bool(forKey: "hasCompletedFirstSetup")
     }
     
     private(set) var inMemoryPasscode: String? = nil
@@ -39,17 +38,26 @@ final class SessionManager: ObservableObject {
     }
     
     func completeSetup(passcode: String, email: String) {
-        // Keychain storage and cryptographic key generation will be implemented in a later security phase.
+        // Keychain storage and cryptographic key generation will be implemented in Phase 2.
         // Under Phase 1.5 rules, no real passcode or secrets are stored in UserDefaults or disk.
         self.inMemoryPasscode = passcode
         self.recoveryEmail = email
+        UserDefaults.standard.set(true, forKey: "hasCompletedFirstSetup")
         self.securityState = .unlocked
-        logger.info("First setup completed in-memory for Phase 1.5 foundation.")
+        logger.info("First setup completed. Status flag saved to UserDefaults; secrets kept in-memory (Phase 1.5).")
     }
     
     func verifyPasscode(_ input: String) -> Bool {
+        guard isSetupCompleted else {
+            logger.info("Passcode verification rejected: First setup not completed.")
+            return false
+        }
+        
         guard let expected = inMemoryPasscode, !expected.isEmpty else {
-            logger.info("Passcode verification rejected: No passcode created during setup.")
+            // Under strict Phase 1.5 security rules, we do NOT allow any random 6-digit passcode after restart.
+            // If inMemoryPasscode is cleared after app restart (Keychain storage is Phase 2), passcode unlock is not permitted.
+            // The user must authenticate via Face ID or reset setup if required.
+            logger.info("Passcode verification rejected: In-memory passcode cleared after restart. Face ID unlock or re-setup required.")
             return false
         }
         
@@ -57,7 +65,7 @@ final class SessionManager: ObservableObject {
             unlock()
             return true
         } else {
-            logger.info("Passcode verification failed.")
+            logger.info("Passcode verification failed: Incorrect passcode entered.")
             return false
         }
     }
@@ -96,8 +104,6 @@ final class SessionManager: ObservableObject {
                 if autoLockDuration == .immediately {
                     lock()
                 } else {
-                    // Lock immediately upon background entry when duration is immediate,
-                    // otherwise ensure locked state if duration expires or if immediate privacy lock is required.
                     lock()
                 }
             }
@@ -129,6 +135,7 @@ final class SessionManager: ObservableObject {
     func resetToFirstSetup() {
         inMemoryPasscode = nil
         recoveryEmail = nil
+        UserDefaults.standard.set(false, forKey: "hasCompletedFirstSetup")
         securityState = .setupRequired
         logger.info("Session reset to first setup for testing/debug.")
     }

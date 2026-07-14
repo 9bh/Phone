@@ -20,7 +20,7 @@ struct AppRootView: View {
             case .locked:
                 LockScreenView(sessionManager: sessionManager)
             case .unlocked:
-                mainSplitView
+                mainNavigationView
             }
             
             if scenePhase == .background || scenePhase == .inactive {
@@ -34,20 +34,12 @@ struct AppRootView: View {
         }
     }
     
-    private var mainSplitView: some View {
-        NavigationSplitView {
-            List(AppSection.allCases, selection: $router.selectedSection) { section in
-                NavigationLink(value: section) {
-                    Label(section.title, systemImage: section.iconName)
+    private var mainNavigationView: some View {
+        NavigationStack(path: $router.path) {
+            DashboardView(router: router)
+                .navigationDestination(for: AppSection.self) { section in
+                    destinationView(for: section)
                 }
-            }
-            .navigationTitle("SecureVault")
-        } detail: {
-            if let selectedSection = router.selectedSection {
-                destinationView(for: selectedSection)
-            } else {
-                DashboardView()
-            }
         }
     }
     
@@ -55,7 +47,7 @@ struct AppRootView: View {
     private func destinationView(for section: AppSection) -> some View {
         switch section {
         case .dashboard:
-            DashboardView()
+            DashboardView(router: router)
         case .accounts:
             AccountsView()
         case .history:
