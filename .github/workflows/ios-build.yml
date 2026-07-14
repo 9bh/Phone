@@ -1,4 +1,4 @@
-name: SecureVault Build
+name: SecureVault IPA Build
 
 on:
   push:
@@ -22,11 +22,26 @@ jobs:
     - name: Show Xcode Version
       run: xcodebuild -version
 
-    - name: Build SecureVault
+    - name: Build Archive
       run: |
         xcodebuild \
         -project SecureVault.xcodeproj \
         -scheme SecureVault \
-        -sdk iphonesimulator \
-        -destination 'platform=iOS Simulator,name=iPhone 17' \
-        build
+        -configuration Release \
+        -sdk iphoneos \
+        -archivePath $PWD/build/SecureVault.xcarchive \
+        archive \
+        CODE_SIGNING_ALLOWED=NO
+
+    - name: Export IPA Folder
+      run: |
+        mkdir -p build/Payload
+        cp -R build/SecureVault.xcarchive/Products/Applications/SecureVault.app build/Payload/
+        cd build
+        zip -r SecureVault.ipa Payload
+
+    - name: Upload IPA Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: SecureVault-IPA
+        path: build/SecureVault.ipa
